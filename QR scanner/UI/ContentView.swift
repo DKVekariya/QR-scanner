@@ -7,18 +7,25 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            GenerateView(viewModel: GenerateViewModel())
+                .tabItem {
+                    Label("Generate", systemImage: "qrcode")
+                }
+            ScanView(viewModel: ScanViewModel())
+                .tabItem {
+                    Label("Scan", systemImage: "camera.viewfinder")
+                }
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
