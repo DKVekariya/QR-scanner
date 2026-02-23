@@ -86,9 +86,9 @@ struct ScanView: View {
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(title: Text("Error"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
             }
-            .onDisappear {
-                viewModel.stopAndClear()
-            }
+            .navigationDestination(item: $viewModel.scannedCode, destination: { destination in
+                    ScanResultView(scannedText: destination)
+            })
         }
     }
 }

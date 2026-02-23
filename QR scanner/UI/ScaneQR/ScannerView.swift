@@ -36,6 +36,5 @@ struct ScannerPreviewView: UIViewRepresentable {
     }
 
     static func dismantleUIView(_ uiView: PreviewView, coordinator: ()) {
-        uiView.viewModel?.stopAndClear()
     }
 }

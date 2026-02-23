@@ -11,15 +11,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        TabView {
-            GenerateView(viewModel: GenerateViewModel())
-                .tabItem {
-                    Label("Generate", systemImage: "qrcode")
-                }
-            ScanView(viewModel: ScanViewModel())
-                .tabItem {
-                    Label("Scan", systemImage: "camera.viewfinder")
-                }
+        NavigationStack {
+            TabView {
+                GenerateView(viewModel: GenerateViewModel())
+                    .tabItem {
+                        Label("Generate", systemImage: "qrcode")
+                    }
+                ScanView(viewModel: ScanViewModel())
+                    .tabItem {
+                        Label("Scan", systemImage: "camera.viewfinder")
+                    }
+            }
         }
     }
 }

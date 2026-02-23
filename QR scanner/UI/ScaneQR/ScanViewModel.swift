@@ -13,6 +13,7 @@ final class ScanViewModel: ObservableObject {
     @Published var scannedCode: String? = nil
     @Published var isScanning: Bool = false
     @Published var showAlert: Bool = false
+    @Published var showResult = false
     
     @Published var alertMessage: String = ""
     
@@ -25,6 +26,7 @@ final class ScanViewModel: ObservableObject {
             .sink { [weak self] code in
                 self?.scannedCode = code
                 self?.isScanning = false
+                self?.showResult = true
             }
             .store(in: &cancellables)
     }
@@ -59,8 +61,9 @@ final class ScanViewModel: ObservableObject {
     }
     
     func stopAndClear() {
-        self.isScanning = false
-        self.scannedCode = nil
+        isScanning = false
+        scannedCode = nil
+        showResult = true
         
         scannerService.stopScanning()
     }
